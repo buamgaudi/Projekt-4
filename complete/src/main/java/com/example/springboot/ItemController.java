@@ -90,6 +90,7 @@ public class ItemController {
     @GetMapping("/assemblies-gui")
     public String createAssemblyDialog(Model model) {
         model.addAttribute("items", getAppStore().getItemStore());
+        model.addAttribute("assemblies", getAppStore().getAssemblies());
         return "assemblyTemplate";
     }
 

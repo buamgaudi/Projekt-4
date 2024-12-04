@@ -35,11 +35,11 @@ public class AppStore {
         return assemblyStore;
     }
 
-    public ArrayList<inginf.Item> getAssemblies() {
-        ArrayList<inginf.Item> assemblies = new ArrayList<>();
+    public ArrayList<Assembly> getAssemblies() {
+        ArrayList<Assembly> assemblies = new ArrayList<>();
         for (inginf.Item item : itemStore) {
-            if (item instanceof inginf.Assembly) {
-                assemblies.add(item);
+            if (item instanceof Assembly) {
+                assemblies.add((Assembly) item);
             }
         }
         return assemblies;

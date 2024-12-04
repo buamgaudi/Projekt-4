@@ -21,6 +21,14 @@
             </td>
         </tr>
         <tr>
+            <td>Select Assembly</td>
+            <td>
+                <select name="assembly" required>
+                    <option th:each="assembly : ${assemblies}" th:value="${assembly.id}" th:text="${assembly.name}">Assembly</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
             <td></td>
             <td><input type="submit" value="Create Assembly"/></td>
         </tr>
