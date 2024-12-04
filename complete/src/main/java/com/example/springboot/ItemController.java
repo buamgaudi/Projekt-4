@@ -50,7 +50,8 @@ public class ItemController {
     }
 
     @GetMapping("/items-gui")
-    public String createItemDialog() {
+    public String createItemDialog(Model model) {
+        model.addAttribute("assemblies", getAppStore().getAssemblies());
         return "itemTemplate";
     } 
     

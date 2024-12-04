@@ -35,6 +35,16 @@ public class AppStore {
         return assemblyStore;
     }
 
+    public ArrayList<inginf.Item> getAssemblies() {
+        ArrayList<inginf.Item> assemblies = new ArrayList<>();
+        for (inginf.Item item : itemStore) {
+            if (item instanceof inginf.Assembly) {
+                assemblies.add(item);
+            }
+        }
+        return assemblies;
+    }
+
     public Assembly addNewAssembly(Assembly assembly) {
         if (assemblyStore.size() == 0)
             assembly.setId(1);

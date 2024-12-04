@@ -21,6 +21,15 @@
         <td><input type="text" name="Material"/></td>
     </tr>
     <tr>
+        <td>Assembly</td>
+        <td>
+            <select name="Assembly">
+                <option value="" disabled selected>Select an assembly</option>
+                <option th:each="assembly : ${assemblies}" th:value="${assembly.id}" th:text="${assembly.nomenclature}"></option>
+            </select>
+        </td>
+    </tr>
+    <tr>
         <td></td>
         <td><input type="submit"/>create</td>
     </tr>
