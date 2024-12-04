@@ -4,9 +4,26 @@ import java.util.ArrayList;
 
 public class SampleStore {
 
+    private ArrayList<Assembly> assemblies = new ArrayList<Assembly>();
+
     private ArrayList<Item> items = new ArrayList<Item>();
     public ArrayList<Item> getItems() {
         return items;
+        initializeAssemblies();
+    }
+
+    private void initializeAssemblies() {
+        Assembly assembly1 = new Assembly("Assembly 1");
+        Assembly assembly2 = new Assembly("Assembly 2");
+        Assembly assembly3 = new Assembly("Assembly 3");
+
+        assemblies.add(assembly1);
+        assemblies.add(assembly2);
+        assemblies.add(assembly3);
+    }
+
+    public ArrayList<Assembly> getAssemblies() {
+        return assemblies;
     }
 
     public SampleStore() {   
