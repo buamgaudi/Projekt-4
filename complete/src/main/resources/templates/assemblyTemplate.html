@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Assembly</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2>Create New Assembly</h2>
+<form method="post" th:action="@{/assemblies-gui}">
+    <table>
+        <tr>
+            <td>Assembly Name</td>
+            <td><input type="text" name="AssemblyName" required/></td>
+        </tr>
+        <tr>
+            <td>Select Items</td>
+            <td>
+                <select name="items" multiple="multiple" required>
+                    <option th:each="item : ${items}" th:value="${item.id}" th:text="${item.nomenclature}">Item</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create Assembly"/></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import inginf.Item;
+import inginf.Assembly;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -84,5 +85,37 @@ public class ItemController {
                 break;
             }
         return "showItem";
+    }
+    @GetMapping("/assemblies-gui")
+    public String createAssemblyDialog(Model model) {
+        model.addAttribute("items", getAppStore().getItemStore());
+        return "assemblyTemplate";
+    }
+
+    @PostMapping("/assemblies-gui")
+    public String createAssembly(
+        Model model,
+        HttpSession session,
+        @RequestParam Map<String, String> body) 
+    {
+        String assemblyName = body.get("AssemblyName");
+        Assembly assembly = new Assembly(assemblyName);
+
+        for (String key : body.keySet()) {
+            if (key.startsWith("item_")) {
+                int itemId = Integer.parseInt(body.get(key));
+                Item item = getAppStore().getItemStore().stream()
+                    .filter(i -> i.getId() == itemId)
+                    .findFirst()
+                    .orElse(null);
+                if (item != null) {
+                    assembly.addItem(item);
+                }
+            }
+        }
+
+        getAppStore().addNewAssembly(assembly);
+        model.addAttribute("assemblyId", assembly.getId());
+        return "assemblyCreated";
     }
 }

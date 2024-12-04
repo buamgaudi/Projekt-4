@@ -33,6 +33,20 @@
             </li>
         </ul>
     </div>
+    <div th:fragment="treeviewAssembly(assembly)">
+        <span th:text="${assembly.name}">Assembly</span>
+        <ul th:if="${assembly.getItems().size() > 0}">
+            <li th:each="item : ${assembly.getItems()}">
+                <i><span th:text="${item.nomenclature}">Item</span></i>
+                <div th:replace="this :: treeviewItem(${item})"></div>
+            </li>
+        </ul>
+    </div>
+    <ul th:if="${item.getAssemblies().size() > 0}">
+        <li th:each="assembly : ${item.getAssemblies()}">
+            <div th:replace="this :: treeviewAssembly(${assembly})"></div>
+        </li>
+    </ul>
 </div>
 
 </body>
